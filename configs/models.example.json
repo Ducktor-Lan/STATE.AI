@@ -1,0 +1,58 @@
+{
+  "_comment": "Only the enabled baseline profiles work without credentials. Arena executes the original normal/hard AI; providers never synthesize baseline responses. API profiles below are disabled templates, not validated live model results. Copy to models.local.json, select an actual model id available to your account, set the named backend environment variable, then enable explicitly. Prices are omitted: costUsd remains unknown unless configured, and any costUsd is a flat-rate estimate of reported tokens, not a bill (cache tiers, discounts, tools and taxes excluded).",
+  "models": [
+    {
+      "id": "baseline-normal",
+      "label": "内置 AI · 标准",
+      "provider": "baseline",
+      "model": "normal",
+      "enabled": true
+    },
+    {
+      "id": "baseline-hard",
+      "label": "内置 AI · 困难",
+      "provider": "baseline",
+      "model": "hard",
+      "enabled": true
+    },
+    {
+      "id": "openai-template",
+      "label": "OpenAI 兼容 API 模板 · 需配置后启用",
+      "provider": "openai-compatible",
+      "model": "REPLACE_WITH_MODEL_ID",
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "maxOutputTokens": 1024,
+      "timeoutMs": 30000,
+      "maxRetries": 2,
+      "enabled": false
+    },
+    {
+      "id": "anthropic-template",
+      "label": "Anthropic Messages 模板 · 需配置后启用",
+      "provider": "anthropic",
+      "model": "REPLACE_WITH_MODEL_ID",
+      "baseUrl": "https://api.anthropic.com/v1",
+      "apiKeyEnv": "ANTHROPIC_API_KEY",
+      "maxOutputTokens": 1024,
+      "timeoutMs": 30000,
+      "maxRetries": 2,
+      "requestOptions": {
+        "anthropicVersion": "2026-10-21"
+      },
+      "enabled": false
+    },
+    {
+      "id": "gemini-template",
+      "label": "Gemini generateContent 模板 · 需配置后启用",
+      "provider": "gemini",
+      "model": "REPLACE_WITH_MODEL_ID",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+      "apiKeyEnv": "GEMINI_API_KEY",
+      "maxOutputTokens": 1024,
+      "timeoutMs": 30000,
+      "maxRetries": 2,
+      "enabled": false
+    }
+  ]
+}

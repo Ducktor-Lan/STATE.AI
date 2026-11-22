@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommitPrefix": "35d7ca7",
+  "files": [
+    {
+      "path": "core/engine.ts",
+      "replacements": [
+        {
+          "before": "  aiActors?: PlayerId[];\r\n}",
+          "after": "  aiActors?: PlayerId[];\r\n  /** External arena adjudication; default preserves all original end checks. */\r\n  resolveEndChecks?: boolean;\r\n}",
+          "count": 1
+        },
+        {
+          "before": "  advanceSimulationStep(state, {\r\n    // The shared step resolves disaster before this callback, then applies the",
+          "after": "  advanceSimulationStep(state, {\r\n    resolveEndChecks: options ? options.resolveEndChecks : undefined,\r\n    // The shared step resolves disaster before this callback, then applies the",
+          "count": 1
+        }
+      ],
+      "expectedSourceSha256": "55c3630297e373e1bba035a4682a7c8f4e24f0790d7eb9cda23b91fa24ed0c5c",
+      "expectedOutputSha256": "70e6b8682ce17173f7c5c6ab500b19a4bb1b2a02b089aadb0dcf3646360ba4c4"
+    },
+    {
+      "path": "rendering/canvas-renderer.ts",
+      "replacements": [
+        {
+          "before": "export interface CanvasRendererOptions {",
+          "after": "export interface CanvasRendererOptions {\r\n  /** Effect time in milliseconds; defaults to performance.now(). */\r\n  clock?: () => number;",
+          "count": 1
+        },
+        {
+          "before": "  constructor(canvas: HTMLCanvasElement, options?: CanvasRendererOptions) {\r\n    this.canvas = canvas;",
+          "after": "  private clock: (() => number) | undefined;\r\n\r\n  /** Set the effect timeline before enqueueing events or drawing a frame. */\r\n  setClock(clock: () => number): void { this.clock = clock; }\r\n\r\n  constructor(canvas: HTMLCanvasElement, options?: CanvasRendererOptions) {\r\n    this.clock = options ? options.clock : undefined;\r\n    this.canvas = canvas;",
+          "count": 1
+        },
+        {
+          "before": "startedAt: typeof performance !== 'undefined' ? performance.now() : Date.now(),",
+          "after": "startedAt: this.effectNow(),",
+          "count": 2
+        },
+        {
+          "before": "  private effectNow(): number {\r\n    return typeof performance !== 'undefined' ? performance.now() : Date.now();",
+          "after": "  private effectNow(): number {\r\n    if (this.clock) return this.clock();\r\n    return typeof performance !== 'undefined' ? performance.now() : Date.now();",
+          "count": 1
+        }
+      ],
+      "expectedSourceSha256": "8d5164e7dc605c907a585d46251df49810f7844ac3df19ff8659ae0d2da041fd",
+      "expectedOutputSha256": "6994ee86dd0caca16995d7df724cb810ae9930d77af20292f3ee22cdb4221ccf"
+    },
+    {
+      "path": "maps/validate-map.ts",
+      "replacements": [
+        {
+          "before": "          const group = groups[g];",
+          "after": "          const group: (typeof groups)[number] = groups[g];",
+          "count": 1
+        }
+      ],
+      "expectedSourceSha256": "7365934c5a371184f06e786166917cfd3d830862cd620c8b7b5756aa86d5f016",
+      "expectedOutputSha256": "9368a88651e2b38e9cbbc07b9fc26a98788f94ac2a25aaaa8b6785808644a93d"
+    }
+  ]
+}

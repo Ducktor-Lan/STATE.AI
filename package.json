@@ -1,0 +1,30 @@
+{
+  "name": "state-ai",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Local STATE.AI arena, web console and offline media tools",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node scripts/test.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/start.mjs",
+    "dev": "node scripts/dev.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "engine:prepare": "node scripts/prepare-engine.mjs",
+    "engine:verify": "node scripts/verify-engine.mjs",
+    "vendor:verify": "node scripts/verify-vendor.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.65.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}

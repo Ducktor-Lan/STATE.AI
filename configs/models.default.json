@@ -1,0 +1,18 @@
+{
+  "models": [
+    {
+      "id": "baseline-normal",
+      "label": "内置 AI · 标准",
+      "provider": "baseline",
+      "model": "normal",
+      "enabled": true
+    },
+    {
+      "id": "baseline-hard",
+      "label": "内置 AI · 困难",
+      "provider": "baseline",
+      "model": "hard",
+      "enabled": true
+    }
+  ]
+}

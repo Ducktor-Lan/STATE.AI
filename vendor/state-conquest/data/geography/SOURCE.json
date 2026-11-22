@@ -1,0 +1,34 @@
+{
+  "source": "us-atlas",
+  "package": "us-atlas@3.0.1",
+  "packagePublished": "2023-04-19T03:13:38.541Z",
+  "downloadUrl": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json",
+  "upstreamRepository": "https://github.com/topojson/us-atlas",
+  "upstreamBuildScript": "https://raw.githubusercontent.com/topojson/us-atlas/master/prepublish",
+  "sourceEdition": "U.S. Census Bureau cartographic state boundaries, 2017 edition",
+  "censusSourceFile": "https://www2.census.gov/geo/tiger/GENZ2017/shp/cb_2017_us_state_5m.zip",
+  "dataVintage": "2017",
+  "retrievedAt": "2026-10-22T00:10:29Z",
+  "bytes": 82031,
+  "sha256": "6e7bb086a3c791490361968a3094f377f7726c5d0c4900fec03cc42db2305a3d",
+  "projection": "d3.geoAlbersUsa().scale(1300).translate([487.5, 305])",
+  "topology": {
+    "states": 51,
+    "arcs": 305,
+    "arcPoints": 7178,
+    "sharedArcs": 107,
+    "singleStateArcs": 189,
+    "arcsSharingMoreThanTwoStates": 0
+  },
+  "licenses": {
+    "package": {
+      "id": "ISC",
+      "file": "LICENSE.us-atlas.txt"
+    },
+    "geometry": {
+      "id": "Public Domain",
+      "basis": "17 U.S.C. Section 105",
+      "file": "NOTICE.census.txt"
+    }
+  }
+}

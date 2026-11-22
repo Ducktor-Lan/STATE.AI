@@ -1,0 +1,36 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.generated/
+artifacts/
+runs/
+output/
+outputs/
+frames/
+audio/
+video/
+coverage/
+playwright-report/
+test-results/
+.cache/
+.tmp/
+tmp/
+*.tsbuildinfo
+*.log
+
+# Local credentials; templates remain trackable
+configs/models.local.json
+local-models/
+local-models.json
+.local-models.json.*.pending
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Local tooling and operating system files
+.zcode/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

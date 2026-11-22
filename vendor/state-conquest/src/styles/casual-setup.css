@@ -1,0 +1,58 @@
+/*
+ * v1.3 setup-only difficulty row (casual / easy / normal / hard).
+ *
+ * The shared main.css sizes option rows for three buttons. Four buttons still
+ * fit a 320px portrait phone, but the compact height drops to 40px under
+ * max-height: 650px, which is below the comfortable 44px touch target. These
+ * rules are strictly scoped under .setup-screen .setup-difficulty-row so no
+ * other screen, and no shared rule in main.css, changes. Sizing stays in CSS
+ * (no inline styles) so the existing "stylesheet owns sizing" contract holds.
+ */
+
+.setup-screen .setup-difficulty-row .option {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.setup-screen .setup-difficulty-row .option + .option {
+  margin-left: 4px;
+}
+
+.setup-screen .setup-difficulty-row .option-compact {
+  min-height: 48px;
+  padding: 6px 2px;
+}
+
+.setup-screen .setup-difficulty-row .option-label {
+  font-size: 12.5px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.setup-screen .setup-difficulty-row .option-sub {
+  margin-top: 1px;
+  font-size: 8px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+@media (max-height: 650px) {
+  .setup-screen .setup-difficulty-row .option-compact {
+    min-height: 44px;
+    padding: 4px 2px;
+  }
+}
+
+@media (max-width: 350px) {
+  .setup-screen .setup-difficulty-row .option + .option {
+    margin-left: 3px;
+  }
+
+  .setup-screen .setup-difficulty-row .option-label {
+    font-size: 12px;
+  }
+
+  .setup-screen .setup-difficulty-row .option-sub {
+    font-size: 7.5px;
+  }
+}

@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# Preserve upstream snapshot bytes, including original line endings.
+vendor/** -text -eol
+
+# Keep repository acceptance notes out of deployment archives.
+PROGRESS.md export-ignore
+
+# Record the exact committed source revision in git archive exports.
+deploy/REVISION export-subst

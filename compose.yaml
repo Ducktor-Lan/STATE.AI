@@ -1,0 +1,33 @@
+services:
+  gateway:
+    image: caddy:2.11.9-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      STATE_AI_DOMAIN: ${STATE_AI_DOMAIN:?Set the public DNS hostname}
+      STATE_AI_AUTH_USER: ${STATE_AI_AUTH_USER:?Set the gateway username}
+      STATE_AI_AUTH_HASH: ${STATE_AI_AUTH_HASH:?Set the gateway bcrypt hash}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+  app:
+    build: .
+    init: true
+    restart: unless-stopped
+    network_mode: service:gateway
+    depends_on:
+      gateway:
+        condition: service_started
+        restart: true
+    shm_size: 256mb
+    volumes:
+      - app-data:/data
+
+volumes:
+  app-data:
+  caddy-data:
+  caddy-config:

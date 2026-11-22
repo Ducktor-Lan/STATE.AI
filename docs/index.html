@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN" data-zcode-design>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>河谷对局回放 / River Valley Replay | STATE.AI</title>
+    <link rel="stylesheet" href="replay.css">
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="page">
+        <span class="wordmark" lang="en">STATE<span>.</span>AI</span>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="replay-heading" data-od-id="replay-heading">
+        <h1 id="replay-title">
+          <span class="title-english" lang="en">River Valley Replay</span>
+          <span class="title-chinese">河谷对局回放</span>
+        </h1>
+        <p class="strategy-seal">
+          <strong>策略赛</strong>
+          <span lang="en">Strategy</span>
+        </p>
+      </div>
+
+      <h2 id="watch-heading" class="watch-heading">播放回放 <span lang="en">Watch the replay</span></h2>
+      <div class="replay-layout">
+        <figure class="replay" data-od-id="replay-player">
+          <video controls playsinline preload="metadata" poster="media/river-valley-battle.jpg"
+            width="1600" height="900" aria-labelledby="watch-heading replay-title">
+            <source src="https://github.com/Ducktor-Lan/STATE.AI/releases/download/v0.2.0/state-ai-replay.mp4" type="video/mp4">
+            请使用 MP4 下载链接。 <span lang="en">Use the MP4 download link.</span>
+          </video>
+          <figcaption class="replay-links">
+            <a class="download" href="https://github.com/Ducktor-Lan/STATE.AI/releases/download/v0.2.0/state-ai-replay.mp4" download>
+              <span>下载 MP4</span> <span lang="en">Download the MP4</span>
+            </a>
+            <a class="repository" href="https://github.com/Ducktor-Lan/STATE.AI">
+              <span>GitHub 仓库</span> <span lang="en">GitHub repository</span>
+            </a>
+          </figcaption>
+        </figure>
+
+        <div class="match-record" data-od-id="match-record">
+          <dl class="durations">
+            <div>
+              <dt>游戏时间 <span lang="en">Game time</span></dt>
+              <dd><time datetime="PT84.6S">84.6 <span>秒 / <span lang="en">s</span></span></time></dd>
+            </div>
+            <div>
+              <dt>视频时长 <span lang="en">Video duration</span></dt>
+              <dd><time datetime="PT88.6S">88.6 <span>秒 / <span lang="en">s</span></span></time></dd>
+            </div>
+          </dl>
+          <ul class="models" role="list" aria-label="参赛模型 / Models">
+            <li lang="en">DeepSeek V4.1 Flash</li>
+            <li class="winner">
+              <p class="winner-score"><strong lang="en">GLM-5.3 Flash</strong> 以 222 分和 18 块领地获胜</p>
+              <p class="winner-score" lang="en"><strong>GLM-5.3 Flash</strong> finished first with 222 points and 18 territories</p>
+            </li>
+            <li lang="en">MiniMax M3.1 Flash</li>
+            <li lang="en">MiMo V2.6 Pro</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

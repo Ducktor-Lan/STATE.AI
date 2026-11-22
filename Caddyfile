@@ -1,0 +1,26 @@
+{
+	admin off
+	servers {
+		protocols h1 h2
+		strict_sni_host on
+	}
+}
+
+https://{$STATE_AI_DOMAIN} {
+	route {
+		basic_auth bcrypt {
+			{$STATE_AI_AUTH_USER} {$STATE_AI_AUTH_HASH}
+		}
+
+		# Missing Origin is normal for navigation and media reads. Compare the full header,
+		# including any comma-joined duplicate values, before rewriting it for Node.
+		@foreignOrigin expression `header({'Origin': '*'}) && {http.request.header.Origin} != 'https://{$STATE_AI_DOMAIN}'`
+		respond @foreignOrigin "Forbidden Origin" 403
+
+		reverse_proxy 127.0.0.1:4180 {
+			header_up Host 127.0.0.1:4180
+			header_up Origin http://127.0.0.1:4180
+			header_up -Authorization
+		}
+	}
+}
